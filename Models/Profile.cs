@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-namespace DatingProgram.Models
+namespace DatingSite.Models
 {
     public class Profile
     {

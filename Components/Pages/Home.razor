@@ -1,8 +1,17 @@
 ﻿@page "/"
 @layout BlankLayout
+@inject NavigationManager navigationManager
 
-<PageTitle>Home</PageTitle>
+<PageTitle>Login</PageTitle>
 
-<h1>Hello, world!</h1>
+<div id="inputs">
 
-Welcome to your new app.
+    <div id="Buttons">
+        <button id="Login">Login</button>
+        <button id="SignUp" @onclick="AccountCreation">Sign up</button>
+    </div>
+</div>
+
+@code {
+    void AccountCreation() => navigationManager.NavigateTo("/Create Account");
+}

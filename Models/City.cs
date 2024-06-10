@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DatingProgram.Models
+namespace DatingSite.Models
 {
     public class City
     {

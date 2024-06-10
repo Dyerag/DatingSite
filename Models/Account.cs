@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.Contracts;
 
-namespace DatingProgram.Models
+namespace DatingSite.Models
 {
     public class Account
     {

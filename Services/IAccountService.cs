@@ -1,6 +1,6 @@
-﻿using DatingProgram.Models;
+﻿using DatingSite.Models;
 
-namespace DatingProgram.Services
+namespace DatingSite.Services
 {
     public interface IAccountService
     {

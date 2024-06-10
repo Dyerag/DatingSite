@@ -1,7 +1,7 @@
-﻿using DatingProgram.Models;
+﻿using DatingSite.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatingProgram.Data
+namespace DatingSite.Data
 {
     public class DatingContext : DbContext
     {

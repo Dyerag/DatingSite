@@ -1,0 +1,15 @@
+﻿@page "/Create Account"
+@page "/Edit Account/{Id:int}"
+@inject IAccountService AccountService
+@layout BlankLayout
+
+@if(Id is null)
+{
+    <PageTitle>New Account</PageTitle>
+    <h3>Create a new account</h3>
+}
+else
+{
+    <PageTitle>Edit </PageTitle>
+}
+

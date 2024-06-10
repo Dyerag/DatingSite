@@ -1,7 +1,7 @@
-﻿using DatingProgram.Data;
-using DatingProgram.Models;
+﻿using DatingSite.Data;
+using DatingSite.Models;
 
-namespace DatingProgram.Services
+namespace DatingSite.Services
 {
     public class AccountService : IAccountService
     {

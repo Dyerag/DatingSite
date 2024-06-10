@@ -1,6 +1,7 @@
-using DatingProgram.Data;
+using DatingSite.Data;
 using DatingSite.Components;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +11,8 @@ builder.Services.AddRazorComponents()
 
 builder.Services.AddDbContext<DatingContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddQuickGridEntityFrameworkAdapter();;
 
 var app = builder.Build();
 
