@@ -1,5 +1,6 @@
 ﻿using DatingSite.Data;
 using DatingSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingSite.Services
 {
@@ -31,6 +32,12 @@ namespace DatingSite.Services
         {
             var account = await _context.Accounts.FindAsync(Id);
             return account;
+        }
+
+        public async Task<List<Account>> GetAllAccountsAsync()
+        {
+            var result = await _context.Accounts.ToListAsync();
+            return result;
         }
 
         public async Task UpdateAccount(Account account, int id)

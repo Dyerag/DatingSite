@@ -1,22 +1,30 @@
 ﻿using DatingSite.Models;
 using Microsoft.AspNetCore.Components;
+using System.Security.Principal;
 
 namespace DatingSite.Components.Pages
 {
     public partial class AccountPage
     {
         [Parameter]
-        public int Id { get; set; }
-
-        public Account EditAccount { get; set; } = new();
+        public int? Id { get; set; }
+        public Account CurrentAccount { get; set; } = new();
 
         protected override async Task OnParametersSetAsync()
         {
-            var account = await AccountService.GetAccountByIdAsync((int)Id);
-            if (account != null)
+            if (Id is not null)
             {
-                EditAccount = account;
+                var account = await AccountService.GetAccountByIdAsync((int)Id);
+                if (account != null)
+                {
+                    CurrentAccount = account;
+                }
             }
+            
+        }
+        public async Task AddAccount()
+        {
+            await AccountService.CreateAccount(CurrentAccount);
         }
     }
 }
