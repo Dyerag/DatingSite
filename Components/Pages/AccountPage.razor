@@ -1,70 +1,91 @@
 ﻿@page "/Create Account"
-@page "/Edit Account/{Id:int}"
+@page "/Home/Edit Account/{Id:int}"
 @inject IAccountService AccountService
 @inject NavigationManager navigationManager
 @rendermode @(new InteractiveServerRenderMode(prerender:false))
-@layout BlankLayout
-
 @if (Id is null)
 {
-    <PageTitle>New Account</PageTitle>
-    <h1>Create</h1>
+@layout BlankLayout
 }
-else
-{
-    <PageTitle>Edit Account</PageTitle>
-    <h1>Edit</h1>
-}
-<h3>Account</h3>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <EditForm method="post" Model="CurrentAccount" OnValidSubmit="AddAccount" FormName="create/edit" Enhance>
-            <DataAnnotationsValidator />
-            <ValidationSummary class="text-danger" />
-            <div class="mb-3">
-                <label for="zipcode" class="form-label">Zipcode:</label>
-                <InputNumber id="zipcode" @bind-Value="CurrentAccount.Zipcode" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Zipcode" class="text-danger" />
+
+<div class="Foreground">
+    @if (Id is null)
+    {
+        <PageTitle>New Account</PageTitle>
+        <h1>Create</h1>
+    }
+    else
+    {
+        <PageTitle>Edit Account</PageTitle>
+        <h1>Edit</h1>
+    }
+
+    <h3>Account</h3>
+    <hr id="Break" />
+
+    <EditForm Model="CurrentAccount" OnValidSubmit="HandleSubmit" FormName="create/edit" Enhance id="Form">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <div class="Inputs">
+                <div>
+                    <label for="firstname">Firstname</label>
+                    <InputText id="firstname" @bind-Value="CurrentAccount.Firstname" class="form-control" />
+                    <ValidationMessage For="() => CurrentAccount.Firstname" class="text-danger" />
+                </div>
+
+                <div>
+                    <label for="lastname">Lastname</label>
+                    <InputText id="lastname" @bind-Value="CurrentAccount.Lastname" class="form-control" />
+                    <ValidationMessage For="() => CurrentAccount.Lastname" class="text-danger" />
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="firstname" class="form-label">Firstname:</label>
-                <InputText id="firstname" @bind-Value="CurrentAccount.Firstname" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Firstname" class="text-danger" />
+
+            <div class="Inputs">
+                <div>
+                    <label for="email">Email</label>
+                    <InputText id="email" @bind-Value="CurrentAccount.Email" class="form-control" />
+                    <ValidationMessage For="() => CurrentAccount.Email" class="text-danger" />
+                </div>
+
+                <div id="TwoInput">
+                    <div id="Birthdate">
+                        <label for="birthdate">Birthdate</label>
+                        <InputDate id="birthdate" @bind-Value="CurrentAccount.Birthdate" class="form-control" />
+                        <ValidationMessage For="() => CurrentAccount.Birthdate" class="text-danger" />
+                    </div>
+                    <div id="Zip">
+                        <label for="zipcode">Zipcode</label>
+                        <InputNumber id="zipcode" @bind-Value="CurrentAccount.Zipcode" class="form-control" />
+                        <ValidationMessage For="() => CurrentAccount.Zipcode" class="text-danger" />
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="lastname" class="form-label">Lastname:</label>
-                <InputText id="lastname" @bind-Value="CurrentAccount.Lastname" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Lastname" class="text-danger" />
+
+            <div class="Inputs">
+                <div>
+                    <label for="username">Username</label>
+                    <InputText id="username" @bind-Value="CurrentAccount.Username" class="form-control" />
+                    <ValidationMessage For="() => CurrentAccount.Username" class="text-danger" />
+                </div>
+
+                <div>
+                    <label for="password">Password</label>
+                    <InputText id="password" @bind-Value="CurrentAccount.Password" class="form-control" />
+                    <ValidationMessage For="() => CurrentAccount.Password" class="text-danger" />
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email:</label>
-                <InputText id="email" @bind-Value="CurrentAccount.Email" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Email" class="text-danger" />
-            </div>
-            <div class="mb-3">
-                <label for="username" class="form-label">Username:</label>
-                <InputText id="username" @bind-Value="CurrentAccount.Username" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Username" class="text-danger" />
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password:</label>
-                <InputText id="password" @bind-Value="CurrentAccount.Password" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Password" class="text-danger" />
-            </div>
-            <div class="mb-3">
-                <label for="birthdate" class="form-label">Birthdate:</label>
-                <InputDate id="birthdate" @bind-Value="CurrentAccount.Birthdate" class="form-control" />
-                <ValidationMessage For="() => CurrentAccount.Birthdate" class="text-danger" />
-            </div>
-            @if(Id is null)
+        </div>
+
+        <div id="btn">
+            @if (Id is null)
             {
-            <button type="submit" class="btn btn-primary">Create</button>
+                <button type="submit">Create</button>
             }
             else
             {
-            <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit">Save</button>
             }
-        </EditForm>
-    </div>
+        </div>
+    </EditForm>
 </div>

@@ -22,9 +22,9 @@ namespace DatingSite.Components.Pages
             }
             
         }
-        public async Task AddAccount()
+        public async Task HandleSubmit()
         {
-            await AccountService.CreateAccount(CurrentAccount);
+            
         }
     }
 }
