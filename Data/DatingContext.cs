@@ -33,11 +33,14 @@ namespace DatingSite.Data
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Like>()
-            .HasOne(pc => pc.Receiver)
-            .WithMany(c => c.ReceivedLikes)
-            .HasForeignKey(pc => pc.ReceiverId)
-            .OnDelete(DeleteBehavior.Restrict);
+                .HasOne(pc => pc.Receiver)
+                .WithMany(c => c.ReceivedLikes)
+                .HasForeignKey(pc => pc.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<Account>()
+                .Property(b => b.CreatedDate)
+                .HasDefaultValueSql("getdate()");
         }
     }
 }
