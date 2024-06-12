@@ -1,17 +1,16 @@
 ﻿@page "/"
 @layout BlankLayout
 @inject NavigationManager navigationManager
+@inject IAccountService accountService
 
 <PageTitle>Login</PageTitle>
 
 <div id="inputs">
+   @*  <EditForm>
 
+    </EditForm> *@
     <div id="Buttons">
-        <button id="Login">Login</button>
+        <button id="Login" @onclick="SignIn">Login</button>
         <button id="SignUp" @onclick="AccountCreation">Sign up</button>
     </div>
 </div>
-
-@code {
-    void AccountCreation() => navigationManager.NavigateTo("/Create Account");
-}

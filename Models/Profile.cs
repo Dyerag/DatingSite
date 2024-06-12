@@ -9,7 +9,7 @@ namespace DatingSite.Models
         public int ProfileId { get; set; }
         public int? Height { get; set; }
         public int? Weight { get; set; }
-        public DateTime Birthdate { get; set; }
+        public DateOnly Birthdate { get; set; }
         public string? Picture { get; set; }
         public string Nickname { get; set; }
         public bool Gender { get; set; }

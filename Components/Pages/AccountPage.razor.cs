@@ -26,12 +26,12 @@ namespace DatingSite.Components.Pages
             if (userservice.Id is not null)
             {
                 await AccountService.UpdateAccount(CurrentAccount, (int)userservice.Id);
-                navigationManager.NavigateTo("/");
+                navigationManager.NavigateTo("/Main");
             }
             else
             {
                 await AccountService.CreateAccount(CurrentAccount);
-                navigationManager.NavigateTo("/Main");
+                navigationManager.NavigateTo("/");
             }
         }
     }
