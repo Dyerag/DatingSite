@@ -16,6 +16,8 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
+builder.Services.AddScoped<UserService,UserService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

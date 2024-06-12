@@ -28,13 +28,13 @@ namespace DatingSite.Services
             }
         }
 
-        public async Task<Account> GetAccountByIdAsync(int Id)
+        public async Task<Account> GetAccountById(int Id)
         {
             var account = await _context.Accounts.FindAsync(Id);
             return account;
         }
 
-        public async Task<List<Account>> GetAllAccountsAsync()
+        public async Task<List<Account>> GetAllAccounts()
         {
             var result = await _context.Accounts.ToListAsync();
             return result;

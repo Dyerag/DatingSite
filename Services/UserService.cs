@@ -2,6 +2,6 @@
 {
     public class UserService
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
     }
 }
