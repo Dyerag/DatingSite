@@ -7,10 +7,13 @@ namespace DatingSite.Models
     public class Account
     {
         public int AccountId { get; set; }
-        [ForeignKey("City")]
+        [ForeignKey("City")][Required]
         public int Zipcode { get; set; }
+        [Required]
         public string Firstname { get; set; }
+        [Required]
         public string Lastname { get; set; }
+        [Required]
         public string Email { get; set; }
         [Required]
         public string Username { get; set; }
