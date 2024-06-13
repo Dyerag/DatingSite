@@ -17,6 +17,7 @@ namespace DatingSite.Components.Pages
                 if (account != null)
                 {
                     CurrentAccount = account;
+                    
                 }
             }
         }

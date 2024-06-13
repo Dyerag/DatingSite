@@ -4,10 +4,7 @@
 @inject UserService userservice
 @inject NavigationManager navigationManager
 @rendermode @(new InteractiveServerRenderMode(prerender:false))
-@if (userservice.Id is null)
-{
-@layout BlankLayout
-}
+@layout BlankLayout 
 
 <div class="Foreground">
     @if (userservice.Id is null)

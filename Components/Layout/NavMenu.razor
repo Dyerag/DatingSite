@@ -11,27 +11,27 @@
 <div id="NavBody" class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            <NavLink class="nav-link" href="Main" Match="NavLinkMatch.All">
+                <span aria-hidden="true">Main</span>
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            <NavLink class="nav-link" href="Main/Edit Account">
+                <span  aria-hidden="true">Edit Account</span>
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span aria-hidden="true"></span> Weather
+            <NavLink class="nav-link" href="wo">
+                <span aria-hidden="true">Weather</span>
             </NavLink>
         </div>
     </nav>
     <nav>
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Create Account">
-                <span aria-hidden="true" @onclick="LogOut"></span> Log Out
+            <NavLink class="nav-link" @onclick="LogOut" href="" Match="NavLinkMatch.All">
+                <span aria-hidden="true" >Log Out</span>
             </NavLink>
         </div>
     </nav>
