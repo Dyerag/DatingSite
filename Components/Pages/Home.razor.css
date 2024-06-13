@@ -6,3 +6,13 @@
 #SignUp {
     background-color: cornflowerblue;
 }
+
+#Buttons {
+    display:flex;
+    justify-content:space-around;
+
+}
+
+.TextField {
+    margin: 10px;
+}

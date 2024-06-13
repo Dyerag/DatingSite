@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject UserService userService
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">DatingSite</a>
     </div>
@@ -6,7 +8,7 @@
 
 <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+<div id="NavBody" class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -22,9 +24,20 @@
 
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+                <span aria-hidden="true"></span> Weather
             </NavLink>
         </div>
     </nav>
+    <nav>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Create Account">
+                <span aria-hidden="true" @onclick="LogOut"></span> Log Out
+            </NavLink>
+        </div>
+    </nav>
+
 </div>
 
+@code {
+    public void LogOut() => userService.Id = null;
+}

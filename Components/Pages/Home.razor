@@ -1,16 +1,47 @@
 ﻿@page "/"
-@layout BlankLayout
 @inject NavigationManager navigationManager
 @inject IAccountService accountService
+@inject UserService userservice
+@layout BlankLayout
 
 <PageTitle>Login</PageTitle>
+@* Temporary Login Skip*@
+<button @onclick=skip>Skip</button>
 
 <div id="inputs">
-   @*  <EditForm>
+    <EditForm Model="Attempt" OnValidSubmit="SignIn">
+        <DataAnnotationsValidator />
 
-    </EditForm> *@
+        <div class="TextField">
+            <label for="Username">Username</label>
+            <InputText id="Username" @bind-Value=Attempt.Username class="form-control" />
+            <ValidationMessage For="() =>Attempt.Username" class="text-danger" />
+        </div>
+
+        <div class="TextField">
+            <label for="Password">Password</label>
+            <InputText id="Password" @bind-Value=Attempt.Password class="form-control" />
+            <ValidationMessage For="()=>Attempt.Password" class="text-danger" />
+        </div>
+    </EditForm>
+
+    @if (WrongLogIn == true)
+    {
+        <div class="text-danger">Username or password is incorrect</div>
+    }
+
+    <hr />
+
     <div id="Buttons">
         <button id="Login" @onclick="SignIn">Login</button>
         <button id="SignUp" @onclick="AccountCreation">Sign up</button>
     </div>
 </div>
+'
+@code {
+    void skip()
+    {
+
+        navigationManager.NavigateTo("/Main");
+    }
+}
