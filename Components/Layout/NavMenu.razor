@@ -1,8 +1,8 @@
-﻿@inject UserService userService
+﻿@inject UserService UserService
 
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="">DatingSite</a>
+        <a class="navbar-brand">@UserService.CurrentAccount.Username</a>
     </div>
 </div>
 
@@ -11,20 +11,26 @@
 <div id="NavBody" class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
     <nav class="flex-column">
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Main" Match="NavLinkMatch.All">
-                <span aria-hidden="true">Main</span>
+            <NavLink class="nav-link" href="Profiles" Match="NavLinkMatch.All">
+                <span aria-hidden="true">Profiles</span>
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="Main/Edit Account">
+            <NavLink class="nav-link" href="Edit Account">
                 <span  aria-hidden="true">Edit Account</span>
             </NavLink>
         </div>
 
         <div class="nav-item px-3">
-            <NavLink class="nav-link" href="wo">
-                <span aria-hidden="true">Weather</span>
+            <NavLink class="nav-link" href="Search">
+                <span aria-hidden="true">Search</span>
+            </NavLink>
+        </div>
+        
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="Chat">
+                <span aria-hidden="true">Chat</span>
             </NavLink>
         </div>
     </nav>
@@ -39,5 +45,5 @@
 </div>
 
 @code {
-    public void LogOut() => userService.Id = null;
+    public void LogOut() => UserService.LogOf();
 }

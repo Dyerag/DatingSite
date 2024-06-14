@@ -15,14 +15,14 @@ namespace DatingSite.Components.Pages
         async Task SignIn()
         {
             WrongLogIn = false;
-            var accountList = await accountService.GetAllAccounts();
+            var accountList = await AccountService.GetAllAccounts();
 
             foreach (var account in accountList)
             {
                 if (account.Username == Attempt.Username && account.Password == Attempt.Password)
                 {
-                    userservice.Id = account.AccountId;
-                    navigationManager.NavigateTo("/Main");
+                    Userservice.CurrentUser(account);
+                    navigationManager.NavigateTo("/Profiles");
                 }
             }
             WrongLogIn = true;

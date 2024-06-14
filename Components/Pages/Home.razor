@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject NavigationManager navigationManager
-@inject IAccountService accountService
-@inject UserService userservice
+@inject IAccountService AccountService
+@inject UserService Userservice
 @layout BlankLayout
 
 <PageTitle>DatingSite - Login</PageTitle>
@@ -42,6 +42,6 @@
     void skip()
     {
 
-        navigationManager.NavigateTo("/Main");
+        navigationManager.NavigateTo("/Profiles");
     }
 }
