@@ -10,4 +10,5 @@ namespace DatingSite.Services
         Task UpdateProfile(Profile profile, int id);
         Task DeleteProfile(int id);
     }
+}
 

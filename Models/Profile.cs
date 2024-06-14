@@ -13,6 +13,7 @@ namespace DatingSite.Models
         public string? Picture { get; set; }
         public string Nickname { get; set; }
         public bool Gender { get; set; }
+        public bool IsDeleted { get; set; } = false;
         public Account Account { get; set; }
         public List<Like> ReceivedLikes { get; set; }
     }

@@ -1,5 +1,6 @@
 ﻿using DatingSite.Data;
 using DatingSite.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatingSite.Services
 {
@@ -19,38 +20,37 @@ namespace DatingSite.Services
 
         public async Task DeleteProfile(int id)
         {
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
+            var profile = await _context.profiles.FindAsync(id);
+            if (profile != null)
             {
-                account.IsDeleted = true;
+                profile.IsDeleted = true;
                 await _context.SaveChangesAsync();
             }
         }
 
-        public async Task<Account> GetAccountById(int Id)
+        public async Task<Profile> GetProfileById(int id)
         {
-            var account = await _context.Accounts.FindAsync(Id);
-            return account;
+            var profile = await _context.profiles.FindAsync(id);
+            return profile;
         }
 
-        public async Task<List<Account>> GetAllAccounts()
+        public async Task<List<Profile>> GetAllProfiles()
         {
-            var result = await _context.Accounts.ToListAsync();
+            var result = await _context.profiles.ToListAsync();
             return result;
         }
 
-        public async Task UpdateAccount(Account account, int id)
+        public async Task UpdateProfile(Profile profile, int id)
         {
-            var dbAccount = await _context.Accounts.FindAsync(id);
-            if (dbAccount != null)
+            var dbProfile = await _context.profiles.FindAsync(id);
+            if (dbProfile != null)
             {
-                dbAccount.Firstname = account.Firstname;
-                dbAccount.Lastname = account.Lastname;
-                dbAccount.Email = account.Email;
-                dbAccount.Password = account.Password;
-                dbAccount.Birthdate = account.Birthdate;
-                dbAccount.Zipcode = account.Zipcode;
-                dbAccount.Username = account.Username;
+                dbProfile.Height = profile.Height;
+                dbProfile.Weight = profile.Weight;
+                dbProfile.Birthdate = profile.Birthdate;
+                dbProfile.Picture = profile.Picture;
+                dbProfile.Nickname= profile.Nickname;
+                dbProfile.Gender = profile.Gender;
 
                 await _context.SaveChangesAsync();
             }
