@@ -24,8 +24,11 @@ namespace DatingSite.Components.Pages
                     Userservice.CurrentUser(account);
                     navigationManager.NavigateTo("/Profiles");
                 }
+                else
+                {
+                    WrongLogIn = true;
+                }
             }
-            WrongLogIn = true;
         }
     }
 }

@@ -2,11 +2,10 @@
 @inject NavigationManager navigationManager
 @inject IAccountService AccountService
 @inject UserService Userservice
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
 @layout BlankLayout
 
 <PageTitle>DatingSite - Login</PageTitle>
-@* Temporary Login Skip*@
-<button @onclick=skip>Skip</button>
 
 <div id="inputs">
     <EditForm Model="Attempt" OnValidSubmit="SignIn">
@@ -37,11 +36,3 @@
         <button id="SignUp" @onclick="AccountCreation">Sign up</button>
     </div>
 </div>
-'
-@code {
-    void skip()
-    {
-
-        navigationManager.NavigateTo("/Profiles");
-    }
-}

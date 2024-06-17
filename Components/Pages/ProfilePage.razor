@@ -1,12 +1,68 @@
-﻿@page "/Profiles"
+﻿@page "/Profiles/Edit Profile/{ProfileId:int}"
+@page "/Profiles/Create Profile"
 @inject NavigationManager NavigationManager
-@inject IProfileServices ProfileService
 @inject UserService UserService
+@inject IProfileService ProfileService
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
+@layout BlankLayout
 
-<PageTitle>DatingSite</PageTitle>
+<div class="Foreground">
+    @if (ProfileId is null)
+    {
+        <PageTitle>DatingSite - New Profile</PageTitle>
+        <h1>Create</h1>
+    }
+    else
+    {
+        <PageTitle>DatingSite - Edit Profile</PageTitle>
+        <h1>Edit</h1>
+    }
 
-<h1>Choose a profile to use</h1>
-<hr/>
+    <h3>Profile</h3>
+    <hr id="Break" />
 
+    <EditForm Model="CurrentProfile" OnValidSubmit="HandleSubmit" FormName="create/edit Profile" Enhance id="Form">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <div class="MultiRowInput">
+                <div>
+                    <label for="Nickname">Nickname</label>
+                    <InputText id="Nickname" @bind-Value="CurrentProfile.Nickname" class="form-control" />
+                    <ValidationMessage For="() => CurrentProfile.Nickname" class="text-danger" />
+                </div>
 
+                <div>
+                    <label for="Height">Height</label>
+                    <InputNumber id="Weight" @bind-Value="CurrentProfile.Height" class="form-control" />
+                    <ValidationMessage For="() => CurrentProfile.Height" class="text-danger" />
+                </div>
+
+                <div id="Birthdate">
+                    <label for="Weight">Weight</label>
+                    <InputNumber id="Weight" @bind-Value="CurrentProfile.Weight" class="form-control" />
+                    <ValidationMessage For="() => CurrentProfile.Weight" class="text-danger" />
+                </div>
+                <div id="Zip">
+                    <label for="Gender">Gender</label>
+                    <InputSelect id="Gender" @bind-Value="CurrentProfile.Gender" class="form-control" />
+                    <ValidationMessage For="() => CurrentProfile.Gender" class="text-danger" />
+                </div>
+            </div>
+
+           
+        </div>
+
+        <div id="btn">
+            @if (ProfileId is null)
+            {
+                <button type="submit">Create</button>
+            }
+            else
+            {
+                <button type="submit">Save</button>
+            }
+        </div>
+    </EditForm>
+</div>
 

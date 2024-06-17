@@ -2,7 +2,7 @@
 
 namespace DatingSite.Services
 {
-    public interface IProfileServices
+    public interface IProfileService
     {
         Task<List<Profile>> GetAllProfiles();
         Task<Profile> GetProfileById(int id);

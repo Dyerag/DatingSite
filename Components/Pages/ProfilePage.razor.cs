@@ -1,19 +1,27 @@
 ﻿using DatingSite.Models;
+using DatingSite.Services;
+using Microsoft.AspNetCore.Components;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace DatingSite.Components.Pages
 {
     public partial class ProfilePage
     {
-        public List<Profile> UserProfiles { get; set; } = new List<Profile>();
+        [Parameter]
+        public int? ProfileId { get; set; }
+        public Profile CurrentProfile { get; set; } = new();
 
-        protected override async Task OnParametersSetAsync()
+        async Task HandleSubmit()
         {
-            var allProfiles = await ProfileService.GetAllProfiles();
-            foreach (var profile in allProfiles)
+            if (ProfileId is not null)
             {
-                if(profile.ProfileId == UserService.CurrentAccount.AccountId)
-                    UserProfiles.Add(profile);
+                await ProfileService.UpdateProfile(CurrentProfile, (int)ProfileId);
             }
+            else
+            {
+                await ProfileService.CreateProfile(CurrentProfile);
+            }
+            NavigationManager.NavigateTo("/Profiles");
         }
     }
 }

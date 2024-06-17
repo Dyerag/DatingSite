@@ -1,3 +1,50 @@
-﻿body {
-    display:flex;
+﻿.Foreground {
+    width: 50vw;
+}
+
+#Break {
+    margin: 5px;
+}
+
+.Inputs {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    /*margin-bottom:15px;*/
+}
+
+    .Inputs > div {
+        display: inline;
+        width: 40%;
+        text-align: center;
+    }
+
+label {
+    margin-top: 10px;
+}
+
+#Birthdate {
+    width: 50%;
+}
+
+#Zip {
+    width: 35%;
+}
+
+button {
+    background-color: cornflowerblue;
+    margin-top: 10px;
+    padding: 10px 15px 10px 15px;
+}
+
+#btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.MultiRowInput {
+    display: flex;
+    justify-content: space-between;
 }

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DatingSite.Services
 {
-    public class ProfileService : IProfileServices
+    public class ProfileService : IProfileService
     {
         private readonly DatingContext _context;
         public ProfileService(DatingContext context)

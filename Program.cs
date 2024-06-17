@@ -17,6 +17,7 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
 builder.Services.AddScoped<UserService,UserService>();
+builder.Services.AddScoped<IProfileService, ProfileService>(); 
 
 var app = builder.Build();
 

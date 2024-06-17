@@ -4,24 +4,24 @@
 @inject UserService userservice
 @inject NavigationManager navigationManager
 @rendermode @(new InteractiveServerRenderMode(prerender:false))
-@layout BlankLayout 
+@layout BlankLayout
 
 <div class="Foreground">
     @if (userservice.Id is null)
     {
-        <PageTitle>New Account</PageTitle>
+        <PageTitle>DatingSite - New Account</PageTitle>
         <h1>Create</h1>
     }
     else
     {
-        <PageTitle>Edit Account</PageTitle>
+        <PageTitle>DatingSite - Edit Account</PageTitle>
         <h1>Edit</h1>
     }
 
     <h3>Account</h3>
     <hr id="Break" />
 
-    <EditForm Model="CurrentAccount" OnValidSubmit="HandleSubmit" FormName="create/edit" Enhance id="Form">
+    <EditForm Model="CurrentAccount" OnValidSubmit="HandleSubmit" FormName="create/edit Account" Enhance id="Form">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <div>

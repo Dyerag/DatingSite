@@ -27,7 +27,7 @@ namespace DatingSite.Components.Pages
             if (userservice.Id is not null)
             {
                 await AccountService.UpdateAccount(CurrentAccount, (int)userservice.Id);
-                navigationManager.NavigateTo("/Main");
+                navigationManager.NavigateTo("/Profiles");
             }
             else
             {
