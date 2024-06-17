@@ -1,0 +1,27 @@
+﻿@page "/Profiles"
+@inject NavigationManager NavigationManager
+@inject IProfileService ProfileService
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
+@inject UserService UserService
+
+<PageTitle>DatingSite</PageTitle>
+
+<h1>Choose a profile to use</h1>
+<hr />
+
+@if (Searching == true)
+{
+    <p>Fetching all profiles</p>
+}
+else
+{
+    if (UserProfiles.Count == 0)
+    {
+        <p> Der findes ikke en profil endnu.</p>
+        <button @onclick=NewProfile> Lav en ny profil her</button>
+    }
+    else
+    {
+        
+    }
+}

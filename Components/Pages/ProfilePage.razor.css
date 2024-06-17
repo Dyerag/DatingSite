@@ -1,5 +1,5 @@
 ﻿.Foreground {
-    width: 50vw;
+    width: 20vw;
 }
 
 #Break {
@@ -8,28 +8,20 @@
 
 .Inputs {
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    /*margin-bottom:15px;*/
+    align-items: center
 }
-
-    .Inputs > div {
-        display: inline;
-        width: 40%;
-        text-align: center;
-    }
 
 label {
     margin-top: 10px;
+    width: 100%;
+    text-align: center;
 }
 
-#Birthdate {
-    width: 50%;
-}
 
-#Zip {
-    width: 35%;
+.Measurements {
+    width: 30%;
 }
 
 button {
@@ -42,9 +34,4 @@ button {
     display: flex;
     justify-content: center;
     margin-top: 10px;
-}
-
-.MultiRowInput {
-    display: flex;
-    justify-content: space-between;
 }
