@@ -19,16 +19,15 @@ namespace DatingSite.Components.Pages
 
             foreach (var account in accountList)
             {
-                if (account.Username == Attempt.Username && account.Password == Attempt.Password)
+                if (account.Username == Attempt.Username && account.Password == Attempt.Password && account.IsDeleted == false)
                 {
                     Userservice.CurrentUser(account);
-                    navigationManager.NavigateTo("/Profiles");
-                }
-                else
-                {
-                    WrongLogIn = true;
+                    Userservice.Profile = await ProfileService.GetProfileById(account.AccountId);
+                    navigationManager.NavigateTo("/Details");
                 }
             }
+            if (Userservice.Id == null)
+                WrongLogIn = true;
         }
     }
 }

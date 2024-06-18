@@ -1,0 +1,43 @@
+﻿@page "/Details"
+@inject NavigationManager NavigationManager
+@inject IProfileService ProfileService
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
+@inject UserService UserService
+
+<PageTitle>DatingSite</PageTitle>
+
+<h1>Account</h1>
+<hr />
+
+@if (Searching == true)
+{
+    <p><em>Fetching all Data</em></p>
+}
+else
+{
+    <div>
+
+    </div>
+    <div></div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Gender</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var profile in UserProfiles)
+            {
+                <tr>
+                    <td>@profile.Nickname</td>
+                    <td>@profile.Gender</td>
+                    <td>
+                        <button id="Edit" @onclick="(()=>EditProfile(profile.ProfileId))">Edit</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

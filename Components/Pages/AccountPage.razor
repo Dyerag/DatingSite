@@ -76,14 +76,17 @@
         </div>
 
         <div id="btn">
-            @if (userservice.Id is null)
-            {
-                <button type="submit">Create</button>
-            }
-            else
-            {
-                <button type="submit">Save</button>
-            }
+            <button type="submit">
+                @if (userservice.Id is null)
+                {
+                    <div>Create</div>
+                }
+                else
+                {
+                    <div>Save</div>
+                }
+            </button>
+
         </div>
     </EditForm>
 </div>

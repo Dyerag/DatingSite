@@ -1,13 +1,13 @@
 ﻿using DatingSite.Models;
+using Newtonsoft.Json.Bson;
 
 namespace DatingSite.Services
 {
     public class UserService
     {
-
         public int? Id { get; set; }
         public Account CurrentAccount { get; set; } = new();
-        public Profile SelectedProfile {  get; set; }= new();
+        public Profile? Profile { get; set; } = new();
 
         public void CurrentUser(Account account)
         {
@@ -19,8 +19,7 @@ namespace DatingSite.Services
         {
             Id = null;
             CurrentAccount = new();
-            SelectedProfile = new Profile();
+            Profile = new Profile();
         }
-
     }
 }

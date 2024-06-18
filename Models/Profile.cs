@@ -7,17 +7,23 @@ namespace DatingSite.Models
     {
         [Key, ForeignKey("Account")]
         public int ProfileId { get; set; }//from account
-        [Required]
-        public string ProfileName { get; set; }//ProfilePage Editform
         public int? Height { get; set; }//ProfilePage Editform
         public int? Weight { get; set; }//ProfilePage Editform
         public DateOnly Birthdate { get; set; }//From account
         public string? Picture { get; set; } //no funtionality yet
-        public string Nickname { get; set; }//ProfilePage Editform
+        public string? Nickname { get; set; }//ProfilePage Editform
         [Required]
-        public bool Gender { get; set; }//ProfilePage Editform
-        public bool IsDeleted { get; set; } = false;//substitution for having to write a funtion to delete the profile
+        public Gender? Gender { get; set; }//ProfilePage Editform
+        //substitution for having to write a funtion to delete the profile
+        // well turn true when associated account is deleted
+        public bool IsDeleted { get; set; } = false;
         public Account Account { get; set; }
         public List<Like> ReceivedLikes { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female
     }
 }

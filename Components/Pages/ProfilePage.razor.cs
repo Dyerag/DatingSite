@@ -11,27 +11,31 @@ namespace DatingSite.Components.Pages
         public int? ProfileId { get; set; }
         public Profile CurrentProfile { get; set; } = new();
 
-        protected override Task OnParametersSetAsync()
+        protected override async Task OnParametersSetAsync()
         {
             if (ProfileId == null)
             {
                 CurrentProfile.ProfileId = UserService.CurrentAccount.AccountId;
                 CurrentProfile.Birthdate = UserService.CurrentAccount.Birthdate;
             }
-                return base.OnParametersSetAsync();
+            else
+            {
+                CurrentProfile = await ProfileService.GetProfileById((int)ProfileId);
+            }
         }
 
         async Task HandleSubmit()
         {
-            if (ProfileId is not null)
+            if (ProfileId != null)
             {
                 await ProfileService.UpdateProfile(CurrentProfile, (int)ProfileId);
             }
             else
             {
                 await ProfileService.CreateProfile(CurrentProfile);
+                UserService.Profile = CurrentProfile;
             }
-            NavigationManager.NavigateTo("/Profiles");
+            NavigationManager.NavigateTo("/Details");
         }
     }
 }

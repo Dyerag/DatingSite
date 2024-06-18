@@ -1,5 +1,5 @@
 ﻿.Foreground {
-    width: 20vw;
+    width: 15vw;
 }
 
 #Break {
@@ -10,7 +10,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center
+    align-items: center;
 }
 
 label {
@@ -21,7 +21,7 @@ label {
 
 
 .Measurements {
-    width: 30%;
+    width: 40%;
 }
 
 button {

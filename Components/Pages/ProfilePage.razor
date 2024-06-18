@@ -1,5 +1,5 @@
-﻿@page "/Profiles/Edit Profile/{ProfileId:int}"
-@page "/Profiles/Create Profile"
+﻿@page "/Details/Edit Profile/{ProfileId:int}"
+@page "/Create Profile"
 @inject NavigationManager NavigationManager
 @inject UserService UserService
 @inject IProfileService ProfileService
@@ -26,20 +26,21 @@
         <ValidationSummary />
         <div class="Inputs">
             <div>
-                <label for="ProfileName">Profile Name</label>
-                <InputText id="ProfileName" @bind-Value="CurrentProfile.ProfileName" class="form-control" />
-                <ValidationMessage For="()=> CurrentProfile.ProfileName" class="text-danger" />
-            </div>
-
-            <div>
                 <label for="Nickname">Nickname</label>
                 <InputText id="Nickname" @bind-Value="CurrentProfile.Nickname" class="form-control" />
                 <ValidationMessage For="() => CurrentProfile.Nickname" class="text-danger" />
             </div>
 
-            <div>
+            <div class="Measurements">
                 <label for="Gender">Gender</label>
-                <InputSelect id="Gender" @bind-Value="CurrentProfile.Gender" class="form-control" />
+                <InputSelect id="Gender" @bind-Value="CurrentProfile.Gender" class="form-control">
+                    @if (ProfileId == null)
+                    {
+                        <option selected disabled>Select</option>
+                    }
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </InputSelect>
                 <ValidationMessage For="() => CurrentProfile.Gender" class="text-danger" />
             </div>
 
@@ -48,6 +49,7 @@
                 <InputNumber id="Weight" @bind-Value="CurrentProfile.Height" class="form-control" />
                 <ValidationMessage For="() => CurrentProfile.Height" class="text-danger" />
             </div>
+
             <div class="Measurements">
                 <label for="Weight">Weight</label>
                 <InputNumber id="Weight" @bind-Value="CurrentProfile.Weight" class="form-control" />
@@ -56,14 +58,16 @@
         </div>
 
         <div id="btn">
-            @if (ProfileId is null)
-            {
-                <button type="submit">Create</button>
-            }
-            else
-            {
-                <button type="submit">Save</button>
-            }
+            <button type="submit">
+                @if (ProfileId is null)
+                {
+                    <div>Create</div>
+                }
+                else
+                {
+                    <div>Save</div>
+                }
+            </button>
         </div>
     </EditForm>
 </div>
