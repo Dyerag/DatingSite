@@ -7,7 +7,7 @@ namespace DatingSite.Services
     {
         public int? Id { get; set; }
         public Account CurrentAccount { get; set; } = new();
-        public Profile? Profile { get; set; } = new();
+        public Profile Profile { get; set; } = new();
 
         public void SetCurrentUser(Account account)
         {

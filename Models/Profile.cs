@@ -7,8 +7,8 @@ namespace DatingSite.Models
     {
         [Key, ForeignKey("Account")]
         public int ProfileId { get; set; }//from account
-        public int? Height { get; set; }//ProfilePage Editform
-        public int? Weight { get; set; }//ProfilePage Editform
+        public int Height { get; set; }//ProfilePage Editform
+        public int Weight { get; set; }//ProfilePage Editform
         public DateOnly Birthdate { get; set; }//From account
         public string? Picture { get; set; } //no funtionality yet
         public string? Nickname { get; set; }//ProfilePage Editform

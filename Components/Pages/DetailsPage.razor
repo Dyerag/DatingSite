@@ -1,8 +1,10 @@
 ﻿@page "/Details"
 @inject NavigationManager NavigationManager
 @inject CityService CityService
-@rendermode @(new InteractiveServerRenderMode(prerender:false))
 @inject UserService UserService
+@inject IProfileService ProfileService
+@inject IAccountService AccountService
+@rendermode @(new InteractiveServerRenderMode(prerender:false))
 
 <PageTitle>DatingSite</PageTitle>
 
@@ -10,7 +12,7 @@
 <hr />
 
 <main>
-    <div id="Account">
+    <div class="Details">
         <h3>Account</h3>
         <table class="table">
             <thead>
@@ -54,7 +56,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         <table class="table">
             <thead>
                 <tr>
@@ -70,8 +72,10 @@
             </tbody>
         </table>
 
+        <button class="Edit" @onclick="EditAccount">Edit</button>
     </div>
-    <div id="Profile">
+
+    <div class="Details">
         <h3>Profile</h3>
         <table class="table">
             <thead>
@@ -80,25 +84,48 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>@UserService.Profile.Nickname</td>
-                    <td>
-                        <button id="Edit" @onclick="(()=>EditProfile(UserService.Profile.ProfileId))">Edit</button>
-                    </td>
+
                 </tr>
 
             </tbody>
+        </table>
+
+        <table class="table">
             <thead>
                 <tr>
-                    Gender
+                    <th>Gender</th>
+                    <th>Birthdate</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th>@UserService.Profile.Gender</th>
+                    <td>@UserService.Profile.Gender</td>
+                    <td>@UserService.Profile.Birthdate</td>
                 </tr>
             </tbody>
         </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Height</th>
+                    <th>Weight</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@UserService.Profile.Height</td>
+                    <td>@UserService.Profile.Weight</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="Edit" @onclick="(()=>EditProfile(UserService.Profile.ProfileId))">Edit</button>
     </div>
+    
 </main>
+<div id="Bottom">
+    <button id="Delete" @onclick="DeleteAccountAndProfile">Delete Account</button>
+</div>
