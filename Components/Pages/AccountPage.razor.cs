@@ -32,7 +32,7 @@ namespace DatingSite.Components.Pages
             else
             {
                 await AccountService.CreateAccount(CurrentAccount);
-                userservice.CurrentUser(CurrentAccount);
+                userservice.SetCurrentUser(CurrentAccount);
 
                 navigationManager.NavigateTo("/Create Profile");
             }

@@ -13,6 +13,7 @@ builder.Services.AddRazorComponents()
 builder.Services.AddDbContext<DatingContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<CityService, CityService>();
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 

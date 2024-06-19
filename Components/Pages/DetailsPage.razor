@@ -1,43 +1,104 @@
 ﻿@page "/Details"
 @inject NavigationManager NavigationManager
-@inject IProfileService ProfileService
+@inject CityService CityService
 @rendermode @(new InteractiveServerRenderMode(prerender:false))
 @inject UserService UserService
 
 <PageTitle>DatingSite</PageTitle>
 
-<h1>Account</h1>
+<h1>Details</h1>
 <hr />
 
-@if (Searching == true)
-{
-    <p><em>Fetching all Data</em></p>
-}
-else
-{
-    <div>
+<main>
+    <div id="Account">
+        <h3>Account</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@UserService.CurrentAccount.Username</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Account Created</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@UserService.CurrentAccount.Email</td>
+                    <td>@UserService.CurrentAccount.CreatedDate</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@UserService.CurrentAccount.Firstname</td>
+                    <td>@UserService.CurrentAccount.Lastname</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Zipcode</th>
+                    <th>birthdate</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@UserService.CurrentAccount.Zipcode @CityName</td>
+                    <td>@UserService.CurrentAccount.Birthdate</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
-    <div></div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nickname</th>
-                <th>Gender</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var profile in UserProfiles)
-            {
+    <div id="Profile">
+        <h3>Profile</h3>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@profile.Nickname</td>
-                    <td>@profile.Gender</td>
+                    <th>Nickname</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>@UserService.Profile.Nickname</td>
                     <td>
-                        <button id="Edit" @onclick="(()=>EditProfile(profile.ProfileId))">Edit</button>
+                        <button id="Edit" @onclick="(()=>EditProfile(UserService.Profile.ProfileId))">Edit</button>
                     </td>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+
+            </tbody>
+            <thead>
+                <tr>
+                    Gender
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>@UserService.Profile.Gender</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>

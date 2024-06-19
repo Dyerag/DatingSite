@@ -21,7 +21,7 @@ namespace DatingSite.Components.Pages
             {
                 if (account.Username == Attempt.Username && account.Password == Attempt.Password && account.IsDeleted == false)
                 {
-                    Userservice.CurrentUser(account);
+                    Userservice.SetCurrentUser(account);
                     Userservice.Profile = await ProfileService.GetProfileById(account.AccountId);
                     navigationManager.NavigateTo("/Details");
                 }
