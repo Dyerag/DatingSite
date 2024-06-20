@@ -48,7 +48,7 @@ button {
     justify-content: space-between;
 }
 
-#TakenUsername {
+.UsernameAndCity {
     margin-top: 10px;
     text-align: center;
 }

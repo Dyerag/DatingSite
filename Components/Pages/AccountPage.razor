@@ -2,6 +2,7 @@
 @page "/Details/Edit Account"
 @inject IAccountService AccountService
 @inject UserService userservice
+@inject CityService CityService
 @inject NavigationManager navigationManager
 @rendermode @(new InteractiveServerRenderMode(prerender:false))
 @layout BlankLayout
@@ -75,9 +76,13 @@
             </div>
         </div>
 
+        @if (CityInDatabase == false)
+        {
+            <div class="text-danger UsernameAndCity">The Zipcode is not in our database</div>
+        }
         @if (UsernameTaken == true)
         {
-            <div class="text-danger" id="TakenUsername">Username is already taken</div>
+            <div class="text-danger UsernameAndCity">Username is already taken</div>
         }
 
         <div id="btn">

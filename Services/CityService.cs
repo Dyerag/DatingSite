@@ -17,5 +17,11 @@ namespace DatingSite.Services
             var city = await _context.Cities.FindAsync(id);
             return city;
         }
+
+        public async Task<List<City>> GetAllCities()
+        {
+            var result = await _context.Cities.ToListAsync();
+            return result;
+        }
     }
 }
