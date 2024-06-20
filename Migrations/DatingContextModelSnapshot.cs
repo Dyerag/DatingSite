@@ -69,6 +69,60 @@ namespace DatingSite.Migrations
                     b.HasIndex("Zipcode");
 
                     b.ToTable("Accounts");
+
+                    b.HasData(
+                        new
+                        {
+                            AccountId = 1,
+                            Birthdate = new DateOnly(1967, 7, 26),
+                            CreatedDate = new DateOnly(1, 1, 1),
+                            Email = "pwe@tec.dk",
+                            Firstname = "Palle",
+                            IsDeleted = false,
+                            Lastname = "Westermann",
+                            Password = "a2",
+                            Username = "a1",
+                            Zipcode = 2700
+                        },
+                        new
+                        {
+                            AccountId = 2,
+                            Birthdate = new DateOnly(2004, 7, 30),
+                            CreatedDate = new DateOnly(1, 1, 1),
+                            Email = "Nikam@Outlook.com",
+                            Firstname = "Nie",
+                            IsDeleted = false,
+                            Lastname = "Finkam",
+                            Password = "ni",
+                            Username = "panini",
+                            Zipcode = 4293
+                        },
+                        new
+                        {
+                            AccountId = 3,
+                            Birthdate = new DateOnly(2000, 1, 1),
+                            CreatedDate = new DateOnly(1, 1, 1),
+                            Email = "Wizmaster@gmail.com",
+                            Firstname = "Albus",
+                            IsDeleted = true,
+                            Lastname = "Dumbledore",
+                            Password = "Wizard",
+                            Username = "Al",
+                            Zipcode = 2791
+                        },
+                        new
+                        {
+                            AccountId = 4,
+                            Birthdate = new DateOnly(1932, 10, 18),
+                            CreatedDate = new DateOnly(1, 1, 1),
+                            Email = "VicTec@hotmail.dk",
+                            Firstname = "Victor",
+                            IsDeleted = true,
+                            Lastname = "Stone",
+                            Password = "Titan",
+                            Username = "Cyborg",
+                            Zipcode = 2000
+                        });
                 });
 
             modelBuilder.Entity("DatingSite.Models.City", b =>
@@ -83,6 +137,58 @@ namespace DatingSite.Migrations
                     b.HasKey("Zipcode");
 
                     b.ToTable("Cities");
+
+                    b.HasData(
+                        new
+                        {
+                            Zipcode = 2000,
+                            CityName = "Frederiksberg"
+                        },
+                        new
+                        {
+                            Zipcode = 2625,
+                            CityName = "Vallensbæk"
+                        },
+                        new
+                        {
+                            Zipcode = 2650,
+                            CityName = "Hvidovre"
+                        },
+                        new
+                        {
+                            Zipcode = 2700,
+                            CityName = "Brønshøj"
+                        },
+                        new
+                        {
+                            Zipcode = 2730,
+                            CityName = "Herlev"
+                        },
+                        new
+                        {
+                            Zipcode = 2740,
+                            CityName = "Skovlunde"
+                        },
+                        new
+                        {
+                            Zipcode = 2791,
+                            CityName = "Dragør"
+                        },
+                        new
+                        {
+                            Zipcode = 2860,
+                            CityName = "Søborg"
+                        },
+                        new
+                        {
+                            Zipcode = 2980,
+                            CityName = "Kokkedal"
+                        },
+                        new
+                        {
+                            Zipcode = 4293,
+                            CityName = "Dianalund"
+                        });
                 });
 
             modelBuilder.Entity("DatingSite.Models.Like", b =>
@@ -135,6 +241,48 @@ namespace DatingSite.Migrations
                     b.HasKey("ProfileId");
 
                     b.ToTable("profiles");
+
+                    b.HasData(
+                        new
+                        {
+                            ProfileId = 1,
+                            Birthdate = new DateOnly(1967, 7, 26),
+                            Gender = 0,
+                            Height = 162,
+                            IsDeleted = false,
+                            Nickname = "Android 13",
+                            Weight = 0
+                        },
+                        new
+                        {
+                            ProfileId = 2,
+                            Birthdate = new DateOnly(2004, 7, 30),
+                            Gender = 1,
+                            Height = 80,
+                            IsDeleted = false,
+                            Nickname = "Nicki",
+                            Weight = 20
+                        },
+                        new
+                        {
+                            ProfileId = 3,
+                            Birthdate = new DateOnly(2000, 1, 1),
+                            Gender = 0,
+                            Height = 0,
+                            IsDeleted = true,
+                            Nickname = "GrandMaster",
+                            Weight = 0
+                        },
+                        new
+                        {
+                            ProfileId = 4,
+                            Birthdate = new DateOnly(1932, 10, 18),
+                            Gender = 0,
+                            Height = 212,
+                            IsDeleted = true,
+                            Nickname = "Booyah",
+                            Weight = 194
+                        });
                 });
 
             modelBuilder.Entity("DatingSite.Models.Account", b =>

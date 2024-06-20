@@ -17,8 +17,8 @@ builder.Services.AddScoped<CityService, CityService>();
 
 builder.Services.AddQuickGridEntityFrameworkAdapter();
 
-builder.Services.AddScoped<UserService,UserService>();
-builder.Services.AddScoped<IProfileService, ProfileService>(); 
+builder.Services.AddScoped<UserService, UserService>();
+builder.Services.AddScoped<IProfileService, ProfileService>();
 
 var app = builder.Build();
 

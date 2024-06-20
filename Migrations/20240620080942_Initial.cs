@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace DatingSite.Migrations
 {
     /// <inheritdoc />
@@ -35,8 +37,8 @@ namespace DatingSite.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedDate = table.Column<DateOnly>(type: "date", nullable: false, defaultValueSql: "getdate()"),
+                    Birthdate = table.Column<DateOnly>(type: "date", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -55,12 +57,13 @@ namespace DatingSite.Migrations
                 columns: table => new
                 {
                     ProfileId = table.Column<int>(type: "int", nullable: false),
-                    Height = table.Column<int>(type: "int", nullable: true),
-                    Weight = table.Column<int>(type: "int", nullable: true),
-                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Height = table.Column<int>(type: "int", nullable: false),
+                    Weight = table.Column<int>(type: "int", nullable: false),
+                    Birthdate = table.Column<DateOnly>(type: "date", nullable: false),
                     Picture = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nickname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gender = table.Column<bool>(type: "bit", nullable: false)
+                    Nickname = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Gender = table.Column<int>(type: "int", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -97,6 +100,45 @@ namespace DatingSite.Migrations
                         principalTable: "profiles",
                         principalColumn: "ProfileId",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Cities",
+                columns: new[] { "Zipcode", "CityName" },
+                values: new object[,]
+                {
+                    { 2000, "Frederiksberg" },
+                    { 2625, "Vallensbæk" },
+                    { 2650, "Hvidovre" },
+                    { 2700, "Brønshøj" },
+                    { 2730, "Herlev" },
+                    { 2740, "Skovlunde" },
+                    { 2791, "Dragør" },
+                    { 2860, "Søborg" },
+                    { 2980, "Kokkedal" },
+                    { 4293, "Dianalund" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Accounts",
+                columns: new[] { "AccountId", "Birthdate", "Email", "Firstname", "IsDeleted", "Lastname", "Password", "Username", "Zipcode" },
+                values: new object[,]
+                {
+                    { 1, new DateOnly(1967, 7, 26), "pwe@tec.dk", "Palle", false, "Westermann", "a2", "a1", 2700 },
+                    { 2, new DateOnly(2004, 7, 30), "Nikam@Outlook.com", "Nie", false, "Finkam", "ni", "panini", 4293 },
+                    { 3, new DateOnly(2000, 1, 1), "Wizmaster@gmail.com", "Albus", true, "Dumbledore", "Wizard", "Al", 2791 },
+                    { 4, new DateOnly(1932, 10, 18), "VicTec@hotmail.dk", "Victor", true, "Stone", "Titan", "Cyborg", 2000 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "profiles",
+                columns: new[] { "ProfileId", "Birthdate", "Gender", "Height", "IsDeleted", "Nickname", "Picture", "Weight" },
+                values: new object[,]
+                {
+                    { 1, new DateOnly(1967, 7, 26), 0, 162, false, "Android 13", null, 0 },
+                    { 2, new DateOnly(2004, 7, 30), 1, 80, false, "Nicki", null, 20 },
+                    { 3, new DateOnly(2000, 1, 1), 0, 0, true, "GrandMaster", null, 0 },
+                    { 4, new DateOnly(1932, 10, 18), 0, 212, true, "Booyah", null, 194 }
                 });
 
             migrationBuilder.CreateIndex(
