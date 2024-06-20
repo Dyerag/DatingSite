@@ -75,6 +75,11 @@
             </div>
         </div>
 
+        @if (UsernameTaken == true)
+        {
+            <div class="text-danger" id="TakenUsername">Username is already taken</div>
+        }
+
         <div id="btn">
             <button type="submit">
                 @if (userservice.Id is null)
@@ -88,5 +93,6 @@
             </button>
 
         </div>
+
     </EditForm>
 </div>
